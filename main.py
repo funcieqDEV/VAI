@@ -32,7 +32,6 @@ class ChatBot:
         if not words:
             return "I dont understand"
 
-        # Użycie historii do generowania odpowiedzi
         context_words = self.get_context_words()
         if context_words:
             words += context_words
@@ -50,9 +49,9 @@ class ChatBot:
         return ' '.join(generated_response)
 
     def get_context_words(self):
-        # Wyodrębnij słowa z ostatnich kilku wymian w historii
+
         context_words = []
-        for exchange in self.history[-3:]:  # Ostatnie 3 wymiany
+        for exchange in self.history[-3:]:  # last 3 messenges
             context_words += self.tokenize(exchange['user'])
             context_words += self.tokenize(exchange['bot'])
         return context_words
